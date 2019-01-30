@@ -28,7 +28,9 @@ class ProductList extends StatelessWidget {
             return _buildFilterwidgets(screenSize);
           } // create bottom for last items.
           else if (index == 4) {
-            return Text("last part");
+            return SizedBox(
+              height: 12.0,
+            );
           } else {
             return _builtProductListRow();
           }
@@ -67,6 +69,9 @@ class ProductList extends StatelessWidget {
   _builtFilterButton(String title) {
     //Inkwell is a type of button, when we press that gives a shadow effect its around.
     return InkWell(
+      onTap: () {
+        print(title);
+      },
       child: Row(
         children: <Widget>[
           Icon(Icons.arrow_drop_down, color: Colors.black),
@@ -82,10 +87,13 @@ class ProductList extends StatelessWidget {
 
   _builtProductListRow() {
     return ProductListRow(
-        name: "Jean",
-        currentPrice: 150,
-        originalPrice: 300,
-        discount: 50,
-        imageUrl: "https://www.aldimgiydim.com/content/images/large/0003051_pano-kot-pantolon-siyah.jpeg");
+      name: "Jean",
+      currentPrice: 150,
+      originalPrice: 300,
+      discount: 50,
+      imageUrl:
+          "https://www.aldimgiydim.com/content/images/large/0003051_pano-kot-pantolon-siyah.jpeg",
+      currcencyUnit: "₺",
+    );
   }
 }

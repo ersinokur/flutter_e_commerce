@@ -7,17 +7,18 @@ class ProductListRow extends StatelessWidget {
   int originalPrice;
   int discount;
   String imageUrl;
-
+  String currcencyUnit;
   ProductListRow(
       {this.name,
       this.currentPrice,
       this.originalPrice,
       this.discount,
-      this.imageUrl});
+      this.imageUrl,
+      this.currcencyUnit});
 
   @override
   Widget build(BuildContext context) {
-    return Row( 
+    return Row(
       children: <Widget>[
         _builtProductItemCard(context),
         _builtProductItemCard(context),
@@ -39,6 +40,53 @@ class ProductListRow extends StatelessWidget {
               height: 250.0,
               width: MediaQuery.of(context).size.width / 2.2,
             ),
+            SizedBox(
+              height: 8.0,
+            ),
+            Padding(
+              padding: EdgeInsets.only(left: 8.0),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.start,
+                children: <Widget>[
+                  Text(
+                    this.name,
+                    style: TextStyle(fontSize: 16.0, color: Colors.grey),
+                  ),
+                  SizedBox(
+                    height: 2.0,
+                  ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    children: <Widget>[
+                      Text(
+                        "$currentPrice $currcencyUnit ",
+                        style: TextStyle(fontSize: 16.0, color: Colors.black),
+                      ),
+                      SizedBox(
+                        height: 8.0,
+                      ),
+                      Text(
+                        "$originalPrice $currcencyUnit ",
+                        style: TextStyle(
+                            fontSize: 13.0,
+                            color: Colors.grey,
+                            decoration: TextDecoration.lineThrough),
+                      ),
+                      SizedBox(
+                        height: 8.0,
+                      ),
+                      Text(
+                        "%$discount discount",
+                        style: TextStyle(
+                          fontSize: 13.0,
+                          color: Colors.grey,
+                        ),
+                      ),
+                    ],
+                  )
+                ],
+              ),
+            )
           ],
         ),
       ),
